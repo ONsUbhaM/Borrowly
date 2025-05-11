@@ -44,9 +44,7 @@ function AddListing() {
       .innerJoin(ItemImages, eq(ItemListing.id, ItemImages.itemListingId))
       .where(eq(ItemListing.id, recordId));
 
-      console.log("Raw DB result:", result); // Add this line
     const resp = FormatResult(result);
-    console.log("Formatted result:", resp); // Add this line
     
     setItemInfo(resp[0]);
     setFormData(resp[0]);

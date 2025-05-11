@@ -1,5 +1,7 @@
+import axios from "axios";
 
-export const FormatResult = (resp) => {
+const SendBirdApplicationID = import.meta.env.VITE_SENDBIRD_APP_ID
+const FormatResult = (resp) => {
     let result = [];
     let finalResult = [];
 
@@ -24,4 +26,12 @@ export const FormatResult = (resp) => {
     })
 
     return finalResult;
+}
+
+const CreateSendBirdUserId = async() => {
+    return axios.post('https://api-'+SendBirdApplicationID+'.sendbird.com/v3/users')
+}
+
+export default {
+    FormatResult
 }

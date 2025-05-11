@@ -5,6 +5,7 @@ import { Separator } from "@radix-ui/react-select";
 
 import MyListing from "./components/MyListing";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Inbox from "./components/Inbox";
 
 function Profile() {  
   return (
@@ -20,7 +21,7 @@ function Profile() {
           </TabsList>
           <Separator className="w-full h-1 !bg-[#1AB6B4] border rounded-full" />
           <TabsContent value="My-listing"><MyListing/></TabsContent>
-          <TabsContent value="inbox">Inbox</TabsContent>
+          <TabsContent value="inbox"><Inbox/></TabsContent>
           <TabsContent value="profile">profile</TabsContent>
         </Tabs>
 

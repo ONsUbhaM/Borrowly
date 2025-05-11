@@ -7,7 +7,7 @@ function OwnersDetails({itemDetails}) {
         <h2 className='font-medium text-2xl mb-3 '>Owner/ Deals</h2>
         <img src={itemDetails?.userImageUrl} alt="user Image" className='w-[70px] h-[70px] rounded-xl '/>
         <h2 className='mt-2 font-bold text-xl'>{itemDetails?.userName}</h2>
-        <h2 className='mt-2 font-bold !text-gray-600'>{itemDetails?.createdBy}</h2>
+        <h2 className='mt-2 font-bold !text-gray-600 text-sm  break-all md:break-normal'>{itemDetails?.createdBy}</h2>
         <h2 className='mt-2 font-bold'>Address</h2>
         <h2 className='mt-2 font-bold !text-gray-600'>{itemDetails?.address}</h2>
 

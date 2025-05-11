@@ -22,11 +22,15 @@ VITE_DRIZZLE_DATABASE_URL=postgresql://neondb_owner:npg_7ZCIvTcDQ8mJ@ep-purple-m
 
 VITE_FIREBASE_API_KEY=AIzaSyAtP2HzNFPJ254re3XTF2G9HGF6-5GLbKs
 
+VITE_SENDBIRD_APP_ID=B4722403-4C88-456D-AA80-42F7A23029E7
+
 authentication dashboard link: https://dashboard.clerk.com/apps/app_2v7uNvPq8QYUt2zzGbpEqrNIqct/instances/ins_2v7uNro6tk2AUjcQFuetHKDC7nC/users/user_2v8FPK9FXJQY7fKZFVFgx2YG4T6
 neon database: https://console.neon.tech/app/projects/winter-feather-55576160?database=neondb
 drizzle database studio: https://local.drizzle.studio/
 firebase project storage contacts: https://console.firebase.google.com/project/contacts-57d69/storage/contacts-57d69.firebasestorage.app/files/~2FBorrowly
 project link: http://localhost:5173/
+SendBird dashboard Link: https://dashboard.sendbird.com/B4722403-4C88-456D-AA80-42F7A23029E7/users
+Sendbird website link: https://sendbird.com/docs/chat/platform-api/v3/user/creating-users/create-a-user
 
 alert dialog 
 drizzle team docs - access your datadelete 
