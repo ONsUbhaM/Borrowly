@@ -7,7 +7,7 @@ function ImageGallery({ itemDetails }) {
         <img
           src={itemDetails?.images[0].imageUrl}
           alt="Item Images"
-          className="w-full h-[500px] object-cover rounded-xl"
+          className="shadow-md w-full h-[500px] object-cover rounded-xl"
         />
       ) : (
         <div className="w-full h-[350px] bg-slate-200 animate-pulse rounded-xl mt-1"></div>

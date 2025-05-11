@@ -7,9 +7,9 @@ function Footer() {
     <footer className="bg-gray-100 dark:bg-gray-900">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600 dark:text-teal-300">
-          <text x="10" y="65" class="disney-style">
+          <h2 x="10" y="65" className="disney-style">
             Borrowly
-          </text>
+          </h2>
         </div>
 
         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400">

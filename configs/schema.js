@@ -12,7 +12,7 @@ export const ItemListing = pgTable("itemListing", {
   listingDescription: varchar("listingDescription").notNull(),
   createdBy: varchar("createdBy").notNull(),
   userName: varchar("userName").notNull().default('Debarpan'),
-  userImageUrl: varchar("userImageUrl").default('https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg'),
+  userImageUrl: varchar("userImageUrl"),
   color: varchar("color").notNull(),
   postedOn: varchar("postedOn"),
   address: varchar("address").notNull()
