@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <div className="flex justify-between items-center p-2">
-      <img src='/logo.png' alt="" width={40} height={40} />
+      <img src='/logo.png' alt="" width={120} height={40} />
 
       <ul className="hidden md:flex gap-16">
         <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
