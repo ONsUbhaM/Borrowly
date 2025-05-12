@@ -33,6 +33,12 @@ function AddListing() {
   const mode = searchParams.get("mode");
   const recordId = searchParams.get("id");
 
+  if (!user) {
+    toast.error("Please sign in to submit a new item");
+    setTimeout(() => navigate("/"), 100); // Small delay ensures the toast shows
+    return;
+  }
+  
   useEffect(() => {
       GetListingDetails();
   }, []);

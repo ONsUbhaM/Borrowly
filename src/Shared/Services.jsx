@@ -31,30 +31,43 @@ export const FormatResult = (resp) => {
 };
 
 export const CreateSendBirdUser = async (userId, nickName, profileUrl) => {
-  return axios.post(
-    "https://api-" + SendBirdApplicationID + ".sendbird.com/v3/users",
-    {
-      user_id: userId,
-      nickname: nickName,
-      profile_url: profileUrl,
-      issue_access_token: false,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        "Api-Token": SendBirdApiToken,
+  if (!userId || typeof userId !== "string") {
+    throw new Error("Invalid user ID");
+  }
+
+  try {
+    const response = await axios.put(
+      `https://api-${SendBirdApplicationID}.sendbird.com/v3/users/${userId}`,
+      {
+        nickname: nickName || userId,
+        profile_url: profileUrl || "",
+        issue_access_token: false,
       },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Api-Token": SendBirdApiToken,
+        },
+      }
+    );
+    console.log("user creation response:", response.data);
+    return response;
+  } catch (error) {
+    if (error.response?.status === 409) {
+      // User already exists - this is fine
+      return { data: { user_id: userId } };
     }
-  );
+    throw error;
+  }
 };
 
-export const CreateSendBirdChannel = (users,title)=>{
+export const CreateSendBirdChannel = (users,channelName)=>{
     return axios.post(
         "https://api-" + SendBirdApplicationID + ".sendbird.com/v3/group_channels",
         {
             user_ids: users,
             is_distinct: true,
-            name: title,
+            name: channelName,
             channel_url:`${users.sort().join('-')}-${Date.now()}`
         },{
             headers: {

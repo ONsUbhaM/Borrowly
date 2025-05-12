@@ -40,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/listing-details/:id",
     element: <ListingDetail/>
-  }
+  },
 ]);
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;

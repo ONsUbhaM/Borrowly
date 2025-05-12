@@ -13,6 +13,13 @@ function OwnersDetails({ itemDetails }) {
 
   const OnMessageOwnerButtonClick = async () => {
     setError(null);
+
+    if (!user || !itemDetails) {
+      setError("Please sign in to message the owner");
+      setIsLoading(false);
+      return;
+    }
+    
     const ownerUserId = itemDetails?.createdBy.split("@")[0];
     const userId = user?.primaryEmailAddress.emailAddress.split("@")[0];
     //create current user id
@@ -40,8 +47,10 @@ function OwnersDetails({ itemDetails }) {
 
     // create channel
     try {
-      
-      await CreateSendBirdChannel([userId,ownerUserId],itemDetails?.listingTitle).then((resp) => {
+      await CreateSendBirdChannel(
+        [userId, ownerUserId], 
+        itemDetails?.userName // Use owner's name instead of listing title
+      ).then((resp) => {
         console.log(resp);
         console.log("channel created");
         navigation('/profile');

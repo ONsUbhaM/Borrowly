@@ -13,7 +13,6 @@ import Pricing from "../components/Pricing";
 import ItemProperties from "../components/ItemProperties";
 import OwnersDetails from "../components/OwnersDetails";
 import Footer from "@/components/Footer";
-import MostSearchedItem from "@/components/MostSearchedCycle";
 function ListingDetail() {
   const { id } = useParams();
   const [itemDetails, setItemDetails] = useState();
@@ -65,7 +64,6 @@ function ListingDetail() {
             <OwnersDetails itemDetails={itemDetails}/>
           </div>
         </div>
-        <MostSearchedItem/>
       </div>
       <Footer/>
     </div>
