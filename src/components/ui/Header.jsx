@@ -2,26 +2,32 @@ import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import React from "react";
 import { Button } from "./button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const { user, isSignedIn } = useUser();
+  const navigate = useNavigate();
+
+  const handleInputChange = (menuItem)=> {
+    switch(menuItem){
+      case 'home': navigate('/');
+      break;
+      case 'search': navigate('/search');
+      break;
+      default: navigate('/');
+    }
+  }
 
   return (
     <div className="flex justify-between items-center p-2">
       <img src='/logo.png' alt="" width={120} height={40} />
 
       <ul className="hidden md:flex gap-16">
-        <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
+        <li onClick={()=>handleInputChange('home')} className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
           Home
         </li>
-        <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
+        <li onClick={()=> handleInputChange('search')} className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
           Search
-        </li>
-        <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
-          New Item
-        </li>
-        <li className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
-          Used Item
         </li>
       </ul>
 

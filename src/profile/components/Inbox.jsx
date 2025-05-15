@@ -12,24 +12,57 @@ function Inbox() {
   const [userId, setUserId] = useState("");
   const [channelUrl, setChannelUrl] = useState("");
   const [isInitialized, setIsInitialized] = useState(false);
+  const [showEmptyState, setShowEmptyState] = useState(false);
 
   useEffect(() => {
-    if (isLoaded && user?.primaryEmailAddress?.emailAddress) {
-      const id = user.primaryEmailAddress.emailAddress.split("@")[0];
-      setUserId(id);
-      setIsInitialized(true);
-      
-      // Checking for channel URL in navigation state
-      if (location.state?.channelUrl) {
-        setChannelUrl(location.state.channelUrl);
+    if (isLoaded) {
+      if (user?.primaryEmailAddress?.emailAddress) {
+        const id = user.primaryEmailAddress.emailAddress.split("@")[0];
+        setUserId(id);
+        setIsInitialized(true);
+        
+        if (location.state?.channelUrl) {
+          setChannelUrl(location.state.channelUrl);
+        }
+      } else {
+        // User is not logged in - show loading for 3 seconds then show empty state
+        const timer = setTimeout(() => {
+          setShowEmptyState(true);
+        }, 3000);
+        
+        return () => clearTimeout(timer);
       }
     }
+  //   if (isLoaded && user?.primaryEmailAddress?.emailAddress) {
+  //     const id = user.primaryEmailAddress.emailAddress.split("@")[0];
+  //     setUserId(id);
+  //     setIsInitialized(true);
+      
+  //     // Checking for channel URL in navigation state
+  //     if (location.state?.channelUrl) {
+  //       setChannelUrl(location.state.channelUrl);
+  //     }
+  //   }
   }, [user, isLoaded, location.state]);
 
-  if (!isInitialized) {
-    return <div className="flex items-center justify-center h-screen">Loading chat...</div>;
-  }
+  // if (!isInitialized) {
+  //   return <div className="flex items-center justify-center h-screen">Loading chat...</div>;
+  // }
 
+  if (!isInitialized) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        {showEmptyState ? (
+          <div className="text-center">
+            <h3 className="text-lg font-medium text-gray-900">Nothing to see here</h3>
+            {/* <p className="mt-2 text-gray-600">Please log in to view your messages</p> */}
+          </div>
+        ) : (
+          <div>Loading chats...</div>
+        )}
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col h-screen">
       <div className="flex-grow flex flex-col">
