@@ -11,7 +11,7 @@ export const ItemListing = pgTable("itemListing", {
   offerType: varchar("offerType"),
   listingDescription: varchar("listingDescription").notNull(),
   createdBy: varchar("createdBy").notNull(),
-  userName: varchar("userName").notNull().default('Debarpan'),
+  userName: varchar("userName").notNull(),
   userImageUrl: varchar("userImageUrl"),
   color: varchar("color").notNull(),
   postedOn: varchar("postedOn"),

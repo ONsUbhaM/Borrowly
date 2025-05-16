@@ -14,6 +14,8 @@ function Header() {
       break;
       case 'search': navigate('/search');
       break;
+      case 'all_items': navigate('/AllItems');
+      break;
       default: navigate('/');
     }
   }
@@ -28,6 +30,9 @@ function Header() {
         </li>
         <li onClick={()=> handleInputChange('search')} className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
           Search
+        </li>
+        <li onClick={()=> handleInputChange('all_items')} className="font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary ">
+          Items
         </li>
       </ul>
 

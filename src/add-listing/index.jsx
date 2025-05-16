@@ -100,7 +100,7 @@ function AddListing() {
           .values({
             ...formData,
             createdBy: user?.primaryEmailAddress?.emailAddress,
-            userName: user?.fullName,
+            userName: user?.fullName || user?.primaryEmailAddress.emailAddress.split('@')[0],
             userImageUrl: user?.imageUrl,
             postedOn: moments().format("DD/MM/YYYY"),
           })

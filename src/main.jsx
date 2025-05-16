@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import SearchByCategory from "./search/[category]";
 import SearchByOptions from "./search";
 import ListingDetail from "./listing-details/[id]";
+import AllItems from "./allItems";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/listing-details/:id",
     element: <ListingDetail/>
+  },
+  {
+    path: "/AllItems",
+    element: <AllItems/>
   },
 ]);
 
