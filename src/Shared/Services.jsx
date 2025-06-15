@@ -4,30 +4,30 @@ const SendBirdApplicationID = import.meta.env.VITE_SENDBIRD_APP_ID;
 const SendBirdApiToken = import.meta.env.VITE_SENDBIRD_API_TOKEN;
 
 export const FormatResult = (resp) => {
-  let result = [];
-  let finalResult = [];
+  // Use object for grouping instead of array
+  const groupedItems = {};
 
   resp.forEach((element) => {
-    const listingId = element.itemListing?.id;
-    if (!result[listingId]) {
-      result[listingId] = {
-        item: element.itemListing,
-        images: [],
+    // Safely get listing ID with null checks
+    const listingId = element?.itemListing?.id;
+    if (!listingId) return; // Skip if no listing ID
+
+    // Initialize entry if not exists
+    if (!groupedItems[listingId]) {
+      groupedItems[listingId] = {
+        ...element.itemListing, // Spread all listing properties
+        images: [] // Initialize empty images array
       };
     }
-    if (element.itemImages) {
-      result[listingId].images.push(element.itemImages);
+
+    // Add image if exists
+    if (element?.itemImages?.imageUrl) {
+      groupedItems[listingId].images.push(element.itemImages);
     }
   });
 
-  result.forEach((element) => {
-    finalResult.push({
-      ...element.item,
-      images: element.images,
-    });
-  });
-
-  return finalResult;
+  // Convert to array and sort by ID descending (newest first)
+  return Object.values(groupedItems).sort((a, b) => b.id - a.id);
 };
 
 export const CreateSendBirdUser = async (userId, nickName, profileUrl) => {

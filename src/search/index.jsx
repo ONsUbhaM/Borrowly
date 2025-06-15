@@ -4,11 +4,13 @@ import { db } from "./../../configs";
 import { ItemImages, ItemListing } from "./../../configs/schema";
 import { eq, and, or } from "drizzle-orm";
 import { FormatResult } from "@/Shared/Services";
-import Header from "@/components/ui/Header";
+// import Header from "@/components/ui/Header";
 import Search from "@/components/Search";
-import CycleItem from "@/components/CycleItem";
+// import CycleItem from "@/components/CycleItem";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
+import Headersecond from "@/components/ui/Headersecond";
+import CycleItem2 from "@/components/CycleItem2";
 
 function SearchByOptions() {
   const [searchParams] = useSearchParams();
@@ -56,10 +58,16 @@ function SearchByOptions() {
 
   return (
     <div>
-      <Header />
-      <div className="p-10 bg-black flex justify-center">
-        <Search />
+      <div
+        className="pt-10 p-10 w-full 
+      bg-[url(/main-bg.jpg)] bg-cover bg-center bg-no-repeat bg-blend-overlay relative flex flex-col justify-center"
+      >
+        <Headersecond />
+        <div className="w-full md:w-[50%] mt-10 ml-10 md:ml-16">
+          <Search className="" />
+        </div>
       </div>
+
       <div className="p-10 md:px-20">
         <h2 className="font-bold text-4xl">Search Results</h2>
 
@@ -76,9 +84,9 @@ function SearchByOptions() {
             No items found in for this search
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7">
             {itemList.map((item, index) => (
-              <CycleItem key={index} car={item} />
+              <CycleItem2 key={index} car={item} />
             ))}
           </div>
         )}

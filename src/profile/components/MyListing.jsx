@@ -13,6 +13,7 @@ import { toast } from "sonner";
 import { storage } from "./../../../configs/firebaseConfig";
 import { ref, deleteObject } from "firebase/storage";
 import { TbLoader3 } from "react-icons/tb";
+import CycleItem2 from "@/components/CycleItem2";
 
 function MyListing() {
   const { user } = useUser();
@@ -83,20 +84,20 @@ function MyListing() {
       <div className="flex justify-between items-center">
         <h2 className="Font-bold text-4xl">My Listings</h2>
         <Link to={"/add-listing"}>
-          <Button className="!bg-[#1AB6B4]">+ Add New Listing</Button>
+          <Button className="!bg-[#7453fc] !rounded-full">+ Add New Listing</Button>
         </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-7 gap-5">
         {itemList.map((item, index) => (
           <div key={index} className="relative">
-            <CycleItem car={item} />
-            <div className="p-2 bg-gray-200 rounded-lg flex justify-between">
+            <CycleItem2 car={item} />
+            <div className="p-2 bg-[#7453fc] rounded-lg flex justify-between">
               <Link to={"/add-listing?mode=edit&id=" + item?.id} className="w-full">
-                <Button className="w-24 !bg-[#1AB6B4] text-white">Edit</Button>
+                <Button className="w-24 !hover:!bg-[#8e52ff] hover:!scale-105 hover:!shadow-lg transition-all duration-300 cursor-pointer !rounded-full py-2 text-white font-semibold !border-2 !border-[#8e52ff]">Edit</Button>
               </Link>
               <Button 
-                className="!bg-red-500"
+                className="!bg-red-400"
                 onClick={() => handleDeleteItem(item)}
                 disabled = {deletingId === item.id}
               >

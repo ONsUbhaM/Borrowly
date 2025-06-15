@@ -19,6 +19,7 @@ import moments from "moment";
 import { useSearchParams } from "react-router-dom";
 import { FormatResult } from "@/Shared/Services";
 import { eq } from "drizzle-orm";
+import Headersecond from "@/components/ui/Headersecond";
 
 function AddListing() {
   // handling form data with the hook useState
@@ -123,12 +124,15 @@ function AddListing() {
 
   return (
     <div>
-      <Header />
+      <div className="w-full 
+      bg-[url(/main-bg.jpg)] bg-cover bg-center bg-no-repeat bg-blend-overlay relative py-15">
+      <Headersecond />
+      </div>
       <div className="px-10 md:px-20 my-10">
         <h2 className="font-bold text-4xl">Add New Listing</h2>
         <form className="p-10 border rounded-xl mt-10">
           {/* Item Details  */}
-          <div>
+          <div className="">
             <h2 className="font-medium text-xl mb-6">Item Details</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {itemDetails.itemDetails.map((item, index) => (
@@ -178,7 +182,7 @@ function AddListing() {
             <Button
               type="Button"
               disabled={loader}
-              className="!bg-[#1AB6B4]"
+              className="!bg-[#7453fc] !rounded-full"
               onClick={(e) => onSubmit(e)}
             >
               {!loader ? (

@@ -42,3 +42,6 @@ ALTER SEQUENCE "itemListing_id_seq" RESTART WITH 1;
 ALTER SEQUENCE "itemImages_id_seq" RESTART WITH 1
 
 
+todo 
+images are not getting uploaded by mobile mitu id 
+

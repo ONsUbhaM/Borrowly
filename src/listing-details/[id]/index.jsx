@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "@/components/ui/Header";
+// import Header from "@/components/ui/Header";
 import DetailHeader from "../components/DetailHeader";
 import { useParams } from "react-router-dom";
 import { FormatResult } from "@/Shared/Services";
@@ -13,33 +13,98 @@ import Pricing from "../components/Pricing";
 import ItemProperties from "../components/ItemProperties";
 import OwnersDetails from "../components/OwnersDetails";
 import Footer from "@/components/Footer";
+import Headersecond from "@/components/ui/Headersecond";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/ui/button";
+import { motion } from "framer-motion";
+
 function ListingDetail() {
   const { id } = useParams();
   const [itemDetails, setItemDetails] = useState();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     GetItemDetail();
   }, []);
 
   const GetItemDetail = async () => {
-    try{
+    try {
       const result = await db
-      .select()
-      .from(ItemListing)
-      .innerJoin(ItemImages, eq(ItemImages.itemListingId, ItemListing.id))
-      .where(eq(ItemListing.id, id));
+        .select()
+        .from(ItemListing)
+        .innerJoin(ItemImages, eq(ItemImages.itemListingId, ItemListing.id))
+        .where(eq(ItemListing.id, id));
 
-    const resp = FormatResult(result);
-    setItemDetails(resp[0]);
-    } catch(error){
+      const resp = FormatResult(result);
+      setItemDetails(resp[0]);
+    } catch (error) {
       console.error("Error fetchign details:", error);
     }
-
-
   };
+
+  // Animation variants
+  const headerVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.2,
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "backOut",
+      },
+    },
+  };
+
   return (
     <div>
-      <Header />
+      <div
+        initial="hidden"
+        animate="visible"
+        variants={headerVariants}
+        className="flex flex-col items-center justify-center gap-7 w-full bg-[url(/heading-bg.jpg)] bg-center bg-cover bg-no-repeat bg-blend-overlay relative p-30 pt-10"
+      >
+        <Headersecond />
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={headerVariants}
+          className="flex flex-col items-center gap-5"
+        >
+          <motion.h6
+            className="font-bold text-white mt-[45px]"
+            variants={itemVariants}
+          >
+            Borrowly Market Place
+          </motion.h6>
+          <motion.h1 className="font-bold text-white" variants={itemVariants}>
+            VIEW ITEM DETAILS
+          </motion.h1>
+          <motion.div variants={itemVariants}>
+            <Link to={"/AllItems"}>
+              <Button className="text-white !bg-violet-500 !rounded-full">
+                All Items
+              </Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
 
       <div className="p-10 md:px-20">
         {/* Header Detail Component */}
@@ -48,24 +113,24 @@ function ListingDetail() {
           {/* left */}
           <div className="md:col-span-2">
             {/* Image gallary */}
-            <ImageGallery itemDetails = {itemDetails}/>
+            <ImageGallery itemDetails={itemDetails} />
             {/* Description */}
-            <Description itemDetails={itemDetails}/>
+            <Description itemDetails={itemDetails} />
           </div>
           {/* Right */}
           <div className="">
             {/* Pricing  */}
-            <Pricing itemDetails={itemDetails}/>
+            <Pricing itemDetails={itemDetails} />
 
             {/* Item properties  */}
-            <ItemProperties itemDetails = {itemDetails}/>
+            <ItemProperties itemDetails={itemDetails} />
 
             {/* owner details */}
-            <OwnersDetails itemDetails={itemDetails}/>
+            <OwnersDetails itemDetails={itemDetails} />
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

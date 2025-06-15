@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,6 +50,82 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
+
+.tagLine{
+  font-family: 'Roboto', sans-serif;
+}
+
+.line{
+  margin-top: 100px;
+}
+
+.catagorySpan{
+  color: #7453fc;
+}
+
+
+.collections {
+  margin-top: 140px;
+}
+
+.collections .item img {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.collections .item .down-content {
+  background-color: #282b2f;
+  border: 1px solid #404245;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 30px;
+}
+
+.collections .item .down-content h4 {
+  font-size: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.collections .item {
+  padding-bottom: 60px;
+}
+
+.collections .item span {
+  color: #fff;
+  display: inline-block;
+  width: 48%;
+  font-size: 15px;
+}
+
+.collections .item span strong {
+  font-size: 20px;
+}
+
+.collections .item span.category {
+  text-align: right;
+}
+
+.collections .item .main-button a {
+  width: 100%;
+  text-align: center;
+}
+
+.collections .item .main-button {
+  margin-top: 20px;
+  margin-bottom: -60px;
+}
+
+.collections .item .main-button a:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #7453fc;
+}
+
+/* start */
+
+/* end */
 
 .disney-style {
   font-family: "Pacifico", cursive;

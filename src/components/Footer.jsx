@@ -4,13 +4,14 @@ function Footer() {
   const d = new Date();
   let year = d.getFullYear();
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900">
+    <footer className="w-full !bg-[url(/main-bg.jpg)] bg-cover bg-center bg-no-repeat bg-blend-overlay relative">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600 dark:text-teal-300">
-        <img src='/logo.png' alt="" width={120} height={40} />
+        {/* <img src='/logo.png' alt="" width={120} height={40} /> */}
+        <h3 className="text-white font-bold text-3xl">Borrowly</h3>
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500 dark:text-gray-400">
+        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-white dark:text-gray-400">
           © {year} Borrowly. All rights reserved.
         </p>
 
